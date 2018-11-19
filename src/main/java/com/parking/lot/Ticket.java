@@ -20,17 +20,17 @@ public class Ticket {
     private int ID;
     private Time time_in;
     private Time time_out;
-    private Date date;
+
     private Boolean is_lost;
     private Ticket ticket;
 
 
-    public Ticket(int ID, Time time_in, Time time_out, Date date, Boolean is_lost) {
+    public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost) {
 
         this.ID = ID;
         this.time_in = time_in;
         this.time_out = time_out;
-        this.date = date;
+
         this.is_lost = is_lost;
 
 
@@ -60,13 +60,7 @@ public class Ticket {
         this.time_out = time_out;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public Boolean getIs_lost() {
         return is_lost;

@@ -25,12 +25,11 @@ public class TicketService {
      * @param ID is the ID of the ticket.
      * @param time_in is the timethat the car enters the parking lot and receives a ticket.
      * @param time_out is the exit time of the car.
-     * @param date is the date that the ticket is issued.
      * @param is_lost is an indication if the ticket has been lost.
      * @return a newly created ticket.
      */
-    public Ticket createTicket(int ID, Time time_in, Time time_out, Date date, Boolean is_lost) {
-        return new Ticket(ID,time_in,time_out,date,is_lost);
+    public Ticket createTicket(int ID, Time time_in, Time time_out, Boolean is_lost) {
+        return new Ticket(ID,time_in,time_out,is_lost);
     }
 
     public List<Ticket> getAllTickets() {
