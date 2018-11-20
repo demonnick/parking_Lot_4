@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Time;
+import java.time.LocalTime;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +22,7 @@ public class TicketServiceTest {
 
     @Test
     public void iAmAbleToCreateAPoolMatch() {
-        final Ticket result = ticketService.createTicket(1, Time.valueOf("2018-11-11 22:22:22"),Time.valueOf("2018-11-11 22:22:22"),false);
+      //  final Ticket result = ticketService.createTicket(1, LocalTime.parse("2018-11-11 22:22:22"),LocalTime.parse("2018-11-11 22:22:22"),false);
 
         //incomplete
 

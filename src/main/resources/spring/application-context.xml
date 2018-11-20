@@ -13,15 +13,15 @@
         <property name = "password" value = "root"/>
     </bean>
 
-    <bean id="poolMatchDao" class="com.parking.lot.dao.ParkingLotDao">
+    <bean id="parkingLotDao" class="com.parking.lot.dao.ParkingLotDao">
         <constructor-arg ref="datasource"/>
     </bean>
 
-    <bean id="poolMatchService" class="com.parking.lot.service.TicketService">
-        <constructor-arg ref="poolMatchDao"/>
+    <bean id="TicketService" class="com.parking.lot.service.TicketService">
+        <constructor-arg ref="parkingLotDao"/>
     </bean>
-    <bean id="poolRestService" class="com.parking.lot.rest.TicketRestService">
-        <constructor-arg ref="poolMatchService"/>
+    <bean id="ticketRestService" class="com.parking.lot.rest.TicketRestService">
+        <constructor-arg ref="TicketService"/>
     </bean>
 
     <import resource="classpath:springmvc-resteasy.xml"/>

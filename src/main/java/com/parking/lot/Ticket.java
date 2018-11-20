@@ -5,11 +5,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 
 import java.sql.Time;
-import java.time.LocalDate;
-
 import java.time.LocalTime;
-import java.sql.Date;
-
 
 /**
  * A Representation of a Parking lot.
@@ -18,14 +14,13 @@ import java.sql.Date;
 public class Ticket {
 
     private int ID;
-    private Time time_in;
-    private Time time_out;
-
+    private LocalTime time_in;
+    private LocalTime time_out;
     private Boolean is_lost;
     private Ticket ticket;
 
 
-    public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost) {
+    public Ticket(int ID, LocalTime time_in, LocalTime time_out, Boolean is_lost) {
 
         this.ID = ID;
         this.time_in = time_in;
@@ -44,19 +39,19 @@ public class Ticket {
         this.ID = ID;
     }
 
-    public Time getTime_in() {
+    public LocalTime getTime_in() {
         return time_in;
     }
 
-    public void setTime_in(Time time_in) {
+    public void setTime_in(LocalTime time_in) {
         this.time_in = time_in;
     }
 
-    public Time getTime_out() {
+    public LocalTime getTime_out() {
         return time_out;
     }
 
-    public void setTime_out(Time time_out) {
+    public void setTime_out(LocalTime time_out) {
         this.time_out = time_out;
     }
 

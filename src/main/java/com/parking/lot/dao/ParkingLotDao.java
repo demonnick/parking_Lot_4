@@ -3,12 +3,9 @@ package com.parking.lot.dao;
 import com.parking.lot.Ticket;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
 import javax.sql.DataSource;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.List;
 
 /**
@@ -16,8 +13,9 @@ import java.util.List;
  */
 public class ParkingLotDao {
 
-    public static final String SELECT_ALL_TICKETS = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN, WINNER FROM TICKET";
-    public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN, WINNER FROM TICKET WHERE ID = ?";
+    public static final String SELECT_ALL_TICKETS = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN FROM TICKET";
+    public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEANFROM TICKET WHERE ID = ?";
+    public static final String CREATE_TICKET = "INSERT INTO TICKET (ID,TIME_IN,TIME_OUT,IS_LOST) VALUES(?, ?, ?, ?)";
 
     private JdbcTemplate jdbcTemplate;
     private final RowMapper<Ticket> ticketRowMapper = new RowMapper<Ticket>() {
@@ -25,8 +23,8 @@ public class ParkingLotDao {
         public Ticket mapRow(ResultSet resultSet, int i) throws SQLException {
             Ticket result = new Ticket(
                     resultSet.getInt("ID"),
-                    resultSet.getTime("TIME_IN"),
-                    resultSet.getTime("TIME_OUT"),
+                    resultSet.getTime("TIME_IN").toLocalTime(),
+                    resultSet.getTime("TIME_OUT").toLocalTime(),
                     resultSet.getBoolean("IS_LOST"));
 
 
@@ -35,11 +33,11 @@ public class ParkingLotDao {
     };
 
 
+
+
     public ParkingLotDao(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
-
-
 
 
     /**
@@ -47,7 +45,7 @@ public class ParkingLotDao {
      *
      * @return a {@link List} of all {@link Ticket}
      */
-    public List<Ticket> getPoolMatches() {
+    public List<Ticket> getTickets() {
         return jdbcTemplate.query(SELECT_ALL_TICKETS, ticketRowMapper);
     }
 
