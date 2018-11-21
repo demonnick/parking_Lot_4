@@ -19,16 +19,17 @@ public class TicketService {
         this.parkingLotDao = parkingLotDao;
     }
 
-    /**
-     * Create a Ticket.
-     * @param ID is the ID of the ticket.
-     * @param time_in is the time that the car enters the parking lot and receives a ticket.
-     * @param time_out is the exit time of the car.
-     * @param is_lost is an indication if the ticket has been lost.
-     * @return a newly created ticket.
-     */
-    public void createTicket(int ID, LocalTime time_in, LocalTime time_out, Boolean is_lost) {
-        ParkingLotDao.
+
+    public void createTicket(Ticket t) {
+
+        Ticket ti = new Ticket();
+        ti.setID(t.getID());
+        ti.setTime_in(t.getTime_in());
+        ti.setTime_out(t.getTime_out());
+        ti.setIs_lost(t.getIs_lost());
+        parkingLotDao.createTicket(ti);
+
+
     }
 
     public List<Ticket> getAllTickets() {

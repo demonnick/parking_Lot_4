@@ -6,6 +6,9 @@ import com.parking.lot.service.TicketService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +21,7 @@ public class TicketRestService {
 
     /**
      * This class requires a {@link TicketService} to deal with tickets.
+     *
      * @param ticketService the {@link TicketService} to use.
      */
     public TicketRestService(TicketService ticketService) {
@@ -26,18 +30,25 @@ public class TicketRestService {
 
     /**
      * Get a ticket from the service.
+     *
      * @return a newly created ticket.
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Ticket> getTicket() {
-        return ticketService.getAllTickets();
-    }
+
+
+
+    //Ticket x =new Ticket(1, Time.valueOf("22:22:22"),Time.valueOf("22:22:22"),false);
+
+       return (List<Ticket>) (ticketService.getAllTickets());
+}
 
     @GET
     @Path("/alll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Ticket> getAll()  {
+
 
 
 
@@ -49,6 +60,7 @@ public class TicketRestService {
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
+
     public void createTicket(Ticket t){
 
 

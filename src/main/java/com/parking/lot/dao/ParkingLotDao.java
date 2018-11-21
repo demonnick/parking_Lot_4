@@ -23,8 +23,8 @@ public class ParkingLotDao {
         public Ticket mapRow(ResultSet resultSet, int i) throws SQLException {
             Ticket result = new Ticket(
                     resultSet.getInt("ID"),
-                    resultSet.getTime("TIME_IN").toLocalTime(),
-                    resultSet.getTime("TIME_OUT").toLocalTime(),
+                    resultSet.getTime("TIME_IN"),
+                    resultSet.getTime("TIME_OUT"),
                     resultSet.getBoolean("IS_LOST"));
 
 
@@ -59,6 +59,10 @@ public class ParkingLotDao {
         return jdbcTemplate.queryForObject(SELECT_SINGLE_TICKET,
                 new Object[]{id},
                 ticketRowMapper);
+    }
 
+    public void createTicket(Ticket ti){
+
+        jdbcTemplate.update(CREATE_TICKET,new Object[]{ti.getID(),ti.getTime_in(),ti.getTime_out(),ti.getIs_lost()});
     }
 }
