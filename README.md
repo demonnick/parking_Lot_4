@@ -43,7 +43,7 @@ POST /create
   
 ] 
 
-I have intentionally not auto incremented the ticket ID. This was done so you know your ticket ID when you sre going to update your ticket.
+I have intentionally not auto incremented the ticket ID. This was done so you know your ticket ID when you are going to update your ticket.
 
 #Updating a ticket.
 Definition
