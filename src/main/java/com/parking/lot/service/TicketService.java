@@ -2,7 +2,7 @@ package com.parking.lot.service;
 
 
 import com.parking.lot.Ticket;
-import com.parking.lot.dao.ParkingLotDao;
+import com.parking.lot.dao.TicketDao;
 
 import java.sql.Time;
 import java.time.*;
@@ -10,46 +10,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A Service that represents all the interactions for a Pool Match.
+ * A Service that represents all the interactions for a ticket.
  */
 public class TicketService {
 
-    private ParkingLotDao parkingLotDao;
+    private TicketDao ticketDao;
     Ticket ti = new Ticket();
     private long duration;
 
 
-    public TicketService(ParkingLotDao parkingLotDao) {
+    public TicketService(TicketDao ticketDao) {
 
-        this.parkingLotDao = parkingLotDao;
+        this.ticketDao = ticketDao;
     }
 
-
+    /**
+     * Create a ticket.
+     *
+     * @param t is the ticket information entered.
+     */
     public void createTicket(Ticket t) {
 
 
         ti.setID(t.getID());
         ti.setTime_in(t.getTime_in());
-        ti.setTime_out(new Time(00,00,00));
+        ti.setTime_out(new Time(00, 00, 00));
         ti.setIs_lost(false);
         ti.setCost(0);
-        parkingLotDao.createTicket(ti);
+        ticketDao.createTicket(ti);
 
 
     }
 
-
+    /**
+     * Get all tickets.
+     */
     public List<Ticket> getAllTickets() {
-
-
-        return parkingLotDao.getTickets();
+        return ticketDao.getTickets();
     }
 
-    public Ticket getTicket(int id){
-        return parkingLotDao.getTicket(id);
+    /**
+     * Get a single ticket.
+     */
+    public Ticket getTicket(int id) {
+        return ticketDao.getTicket(id);
     }
 
-
+    /**
+     * Calculate ticket cost.
+     */
     public int calcCost() {
 
         int cost = 0;
@@ -60,7 +69,7 @@ public class TicketService {
         }
 
 
-       System.out.println(duration);
+        System.out.println(duration);
 
         List<FeeStructure> fs = new ArrayList<>();
 
@@ -70,39 +79,37 @@ public class TicketService {
         fs.add(new FeeStructure("to 2 hours", 40, 91, 120));
         fs.add(new FeeStructure("to 2 hours 30 min", 50, 120, 150));
 
-        for (int i = 0; i <4; i++) {
-            System.out.println(fs.get(i).getStart());
+        for (int i = 0; i < 4; i++) {
 
             if (duration >= fs.get(i).getStart() && duration <= fs.get(i).getEnd()) {
 
-
                 cost = fs.get(i).getPrice();
 
-
             } else if (duration > fs.get(4).getEnd() || duration < fs.get(0).getStart()) {
+
                 cost = fs.get(4).getEnd() + 100;
                 ti.setIs_lost(true);
-
-         }
-
-
+            }
         }
 
         return cost;
 
-
     }
 
+    /**
+     * Update a ticket.
+     *
+     * @param ticket is the ticket information entered.
+     */
     public void updateTicket(Ticket ticket) {
 
 
         ti.setID(ticket.getID());
-        ti.setTime_in(parkingLotDao.getTicket(ticket.getID()).getTime_in());
+        ti.setTime_in(ticketDao.getTicket(ticket.getID()).getTime_in());
         ti.setTime_out(ticket.getTime_out());
         ti.setIs_lost(ticket.getIs_lost());
         ti.setCost(calcCost());
-        parkingLotDao.updateTicket(ti);
-
+        ticketDao.updateTicket(ti);
 
     }
 

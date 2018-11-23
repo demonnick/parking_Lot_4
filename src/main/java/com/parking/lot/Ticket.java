@@ -1,27 +1,19 @@
 package com.parking.lot;
 
 
-
-
 import java.sql.Time;
-import java.time.LocalDateTime;
-
-import java.util.List;
-
 /**
  * A Representation of a Parking lot.
  */
 
 public class Ticket {
 
-    
+
     private int ID;
     private Time time_in;
     private Time time_out;
     private Boolean is_lost;
     private int cost;
-
-
 
 
     public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost, int Cost) {
@@ -33,12 +25,10 @@ public class Ticket {
         this.cost = Cost;
 
 
-
     }
 
 
-
-    public Ticket(){
+    public Ticket() {
 
     }
 
@@ -75,7 +65,6 @@ public class Ticket {
     }
 
 
-
     public Boolean getIs_lost() {
         return is_lost;
     }
@@ -83,11 +72,6 @@ public class Ticket {
     public void setIs_lost(Boolean is_lost) {
         this.is_lost = is_lost;
     }
-
-
-
-
-
 
 
 }
