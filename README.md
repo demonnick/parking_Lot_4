@@ -4,6 +4,8 @@
 
 Using the tomcat plugin for maven, click on "tomcat7:run" under the maven projects tab(located on the right side) on intellij.
 
+Enable auto import for maven if necessary
+
 #Default pricing scheme:
 
 Time	 |   Fee 
