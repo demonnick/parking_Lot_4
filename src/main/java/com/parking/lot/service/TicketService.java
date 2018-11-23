@@ -4,6 +4,7 @@ package com.parking.lot.service;
 import com.parking.lot.Ticket;
 import com.parking.lot.dao.ParkingLotDao;
 
+import java.sql.Time;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,9 @@ public class TicketService {
 
         ti.setID(t.getID());
         ti.setTime_in(t.getTime_in());
-        ti.setTime_out(t.getTime_out());
-        ti.setIs_lost(t.getIs_lost());
-        ti.setCost(calcCost());
+        ti.setTime_out(new Time(00,00,00));
+        ti.setIs_lost(false);
+        ti.setCost(0);
         parkingLotDao.createTicket(ti);
 
 
@@ -42,6 +43,10 @@ public class TicketService {
 
 
         return parkingLotDao.getTickets();
+    }
+
+    public Ticket getTicket(int id){
+        return parkingLotDao.getTicket(id);
     }
 
 
@@ -72,19 +77,31 @@ public class TicketService {
 
 
                 cost = fs.get(i).getPrice();
-                System.out.println(duration);
-                System.out.println(cost);
+
 
             } else if (duration > fs.get(4).getEnd() || duration < fs.get(0).getStart()) {
                 cost = fs.get(4).getEnd() + 100;
                 ti.setIs_lost(true);
 
-            }
+         }
 
 
         }
 
         return cost;
+
+
+    }
+
+    public void updateTicket(Ticket ticket) {
+
+
+        ti.setID(ticket.getID());
+        ti.setTime_in(parkingLotDao.getTicket(ticket.getID()).getTime_in());
+        ti.setTime_out(ticket.getTime_out());
+        ti.setIs_lost(ticket.getIs_lost());
+        ti.setCost(calcCost());
+        parkingLotDao.updateTicket(ti);
 
 
     }

@@ -47,6 +47,7 @@ public class TicketRestService {
         return (List<Ticket>) (ticketService.getAllTickets());
 
 
+
     }
 
     @POST
@@ -58,6 +59,22 @@ public class TicketRestService {
 
 
          ticketService.createTicket(t);
+    }
+
+    @PUT
+    @Path("/update/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void updateTicket(@PathParam("id") int id, Ticket ticket) {
+
+    Ticket t = new Ticket();
+    t.setID(id);
+    t.setIs_lost(ticket.getIs_lost());
+    t.setTime_out(ticket.getTime_out());
+    ticketService.updateTicket(t);
+
+
+
     }
 
 

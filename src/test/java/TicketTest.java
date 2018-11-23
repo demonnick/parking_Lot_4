@@ -13,8 +13,7 @@ public class TicketTest {
 
     @Before
     public void setUp() throws Exception {
-        //ticket = new Ticket(1, LocalTime.parse("2018-11-11 22:22:22"),LocalTime.parse("2018-11-11 22:22:22"),false);
-
+        Ticket ticket = new Ticket(0,Time.valueOf("12:00:00"),Time.valueOf("12:00:00"),false,0);
     }
 
 
