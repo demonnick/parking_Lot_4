@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class ParkingLotDao {
 
-    public static final String SELECT_ALL_TICKETS = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN FROM TICKET";
-    public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEANFROM TICKET WHERE ID = ?";
-    public static final String CREATE_TICKET = "INSERT INTO TICKET (ID,TIME_IN,TIME_OUT,IS_LOST) VALUES(?, ?, ?, ?)";
+    public static final String SELECT_ALL_TICKETS = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN,COST INTEGER FROM TICKET";
+    public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN ,COST INTEGER FROM TICKET WHERE ID = ?";
+    public static final String CREATE_TICKET = "INSERT INTO TICKET (ID,TIME_IN,TIME_OUT,IS_LOST,COST ) VALUES(?, ?, ?, ?,?)";
 
 
     private JdbcTemplate jdbcTemplate;
@@ -26,7 +26,8 @@ public class ParkingLotDao {
                     resultSet.getInt("ID"),
                     resultSet.getTime("TIME_IN"),
                     resultSet.getTime("TIME_OUT"),
-                    resultSet.getBoolean("IS_LOST"));
+                    resultSet.getBoolean("IS_LOST"),
+                    resultSet.getInt("COST"));
 
 
             return result;
@@ -64,7 +65,7 @@ public class ParkingLotDao {
 
     public void createTicket(Ticket ti){
 
-        jdbcTemplate.update(CREATE_TICKET,new Object[]{ti.getID(),ti.getTime_in(),ti.getTime_out(),ti.getIs_lost()});
+        jdbcTemplate.update(CREATE_TICKET,new Object[]{ti.getID(),ti.getTime_in(),ti.getTime_out(),ti.getIs_lost(),ti.getCost()});
     }
 
 

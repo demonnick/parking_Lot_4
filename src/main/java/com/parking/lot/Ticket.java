@@ -19,19 +19,24 @@ public class Ticket {
     private Time time_in;
     private Time time_out;
     private Boolean is_lost;
+    private int cost;
 
 
 
-    public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost) {
+
+    public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost, int Cost) {
 
         this.ID = ID;
         this.time_in = time_in;
         this.time_out = time_out;
-
         this.is_lost = is_lost;
+        this.cost = Cost;
+
 
 
     }
+
+
 
     public Ticket(){
 
@@ -59,6 +64,14 @@ public class Ticket {
 
     public void setTime_out(Time time_out) {
         this.time_out = time_out;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int Cost) {
+        this.cost = Cost;
     }
 
 

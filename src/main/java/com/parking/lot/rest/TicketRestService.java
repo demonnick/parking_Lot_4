@@ -43,7 +43,7 @@ public class TicketRestService {
 
 
 
-        ticketService.calcCost();
+
         return (List<Ticket>) (ticketService.getAllTickets());
 
 
