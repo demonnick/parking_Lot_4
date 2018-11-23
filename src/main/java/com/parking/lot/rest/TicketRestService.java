@@ -33,27 +33,19 @@ public class TicketRestService {
      *
      * @return a newly created ticket.
      */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Ticket> getTicket() {
 
-
-
-    //Ticket x =new Ticket(1, Time.valueOf("22:22:22"),Time.valueOf("22:22:22"),false);
-
-       return (List<Ticket>) (ticketService.getAllTickets());
-}
 
     @GET
-    @Path("/alll")
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Ticket> getAll()  {
 
 
 
 
+        ticketService.calcCost();
+        return (List<Ticket>) (ticketService.getAllTickets());
 
-        return ticketService.getAllTickets();
 
     }
 
@@ -67,6 +59,7 @@ public class TicketRestService {
 
          ticketService.createTicket(t);
     }
+
 
 
 }

@@ -17,6 +17,7 @@ public class ParkingLotDao {
     public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEANFROM TICKET WHERE ID = ?";
     public static final String CREATE_TICKET = "INSERT INTO TICKET (ID,TIME_IN,TIME_OUT,IS_LOST) VALUES(?, ?, ?, ?)";
 
+
     private JdbcTemplate jdbcTemplate;
     private final RowMapper<Ticket> ticketRowMapper = new RowMapper<Ticket>() {
         @Override
@@ -65,4 +66,6 @@ public class ParkingLotDao {
 
         jdbcTemplate.update(CREATE_TICKET,new Object[]{ti.getID(),ti.getTime_in(),ti.getTime_out(),ti.getIs_lost()});
     }
+
+
 }

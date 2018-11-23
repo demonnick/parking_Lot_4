@@ -3,6 +3,7 @@ package com.parking.lot;
 
 
 
+
 import java.sql.Time;
 import java.time.LocalDateTime;
 
@@ -12,28 +13,29 @@ import java.util.List;
  * A Representation of a Parking lot.
  */
 
-public class Ticket {
+public class TicketWCost {
 
-    
+
     private int ID;
     private Time time_in;
     private Time time_out;
     private Boolean is_lost;
+    private int cost;
 
 
 
-    public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost) {
+    public TicketWCost(int ID, Time time_in, Time time_out, Boolean is_lost,int Cost) {
 
         this.ID = ID;
         this.time_in = time_in;
         this.time_out = time_out;
-
         this.is_lost = is_lost;
+        this.cost = Cost;
 
 
     }
 
-    public Ticket(){
+    public TicketWCost(){
 
     }
 
@@ -43,6 +45,14 @@ public class Ticket {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int Cost) {
+        this.cost = Cost;
     }
 
     public Time getTime_in() {
