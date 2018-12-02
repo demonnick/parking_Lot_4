@@ -1,6 +1,7 @@
 package com.parking.lot.service;
 
 
+import com.parking.lot.FeeStructure;
 import com.parking.lot.Ticket;
 import com.parking.lot.dao.TicketDao;
 
@@ -69,7 +70,7 @@ public class TicketService {
         }
 
 
-        System.out.println(duration);
+
 
         List<FeeStructure> fs = new ArrayList<>();
 

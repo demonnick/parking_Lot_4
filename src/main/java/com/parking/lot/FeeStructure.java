@@ -1,4 +1,4 @@
-package com.parking.lot.service;
+package com.parking.lot;
 
 public class FeeStructure {
 
