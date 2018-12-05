@@ -1,7 +1,9 @@
 package com.parking.lot.rest;
 
 
+import com.parking.lot.FeeStructure;
 import com.parking.lot.Ticket;
+import com.parking.lot.service.FeeStructureService;
 import com.parking.lot.service.TicketService;
 
 import javax.ws.rs.*;
@@ -15,6 +17,7 @@ import java.util.List;
 public class TicketRestService {
 
     private TicketService ticketService;
+    private FeeStructureService feeStructureService;
 
     /**
      * This class requires a {@link TicketService} to deal with tickets.
@@ -35,6 +38,20 @@ public class TicketRestService {
 
 
         return (List<Ticket>) (ticketService.getAllTickets());
+
+
+    }
+
+    /**
+     * Get all tickets from the service.
+     */
+    @GET
+    @Path("/fee")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<FeeStructure> getAllFee() {
+
+
+        return (List<FeeStructure>) (feeStructureService.getFeeStructure());
 
 
     }
@@ -70,6 +87,7 @@ public class TicketRestService {
         t.setID(id);
         t.setIs_lost(ticket.getIs_lost());
         t.setTime_out(ticket.getTime_out());
+        t.setLot(1);
         ticketService.updateTicket(t);
 
 

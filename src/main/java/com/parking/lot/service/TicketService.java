@@ -4,6 +4,7 @@ package com.parking.lot.service;
 import com.parking.lot.FeeStructure;
 import com.parking.lot.Ticket;
 import com.parking.lot.dao.TicketDao;
+import jdk.nashorn.internal.objects.NativeString;
 
 import java.sql.Time;
 import java.time.*;
@@ -16,6 +17,7 @@ import java.util.List;
 public class TicketService {
 
     private TicketDao ticketDao;
+
     Ticket ti = new Ticket();
     private long duration;
 
@@ -38,6 +40,7 @@ public class TicketService {
         ti.setTime_out(new Time(00, 00, 00));
         ti.setIs_lost(false);
         ti.setCost(0);
+        ti.setLot(1);
         ticketDao.createTicket(ti);
 
 
@@ -74,11 +77,11 @@ public class TicketService {
 
         List<FeeStructure> fs = new ArrayList<>();
 
-        fs.add(new FeeStructure("to 30 min", 10, 0, 30));
-        fs.add(new FeeStructure("to 1 hour", 20, 31, 60));
-        fs.add(new FeeStructure("to 1 hour 30 min", 30, 61, 90));
-        fs.add(new FeeStructure("to 2 hours", 40, 91, 120));
-        fs.add(new FeeStructure("to 2 hours 30 min", 50, 120, 150));
+        fs.add(new FeeStructure(1,"to 30 min", 10, 0, 30,1));
+        fs.add(new FeeStructure(1,"to 1 hour", 20, 31, 60,2));
+        fs.add(new FeeStructure(1,"to 1 hour 30 min", 30, 61, 90,3));
+        fs.add(new FeeStructure(1,"to 2 hours", 40, 91, 120,4));
+        fs.add(new FeeStructure(1,"to 2 hours 30 min", 50, 120, 150,5));
 
         for (int i = 0; i < 4; i++) {
 
@@ -110,6 +113,7 @@ public class TicketService {
         ti.setTime_out(ticket.getTime_out());
         ti.setIs_lost(ticket.getIs_lost());
         ti.setCost(calcCost());
+
         ticketDao.updateTicket(ti);
 
     }

@@ -14,15 +14,18 @@ public class Ticket {
     private Time time_out;
     private Boolean is_lost;
     private int cost;
+    private int lot;
 
 
-    public Ticket(int ID, Time time_in, Time time_out, Boolean is_lost, int Cost) {
+
+    public Ticket(int id, Time time_in, Time time_out, boolean is_lost, int Cost, int Lot) {
 
         this.ID = ID;
         this.time_in = time_in;
         this.time_out = time_out;
         this.is_lost = is_lost;
         this.cost = Cost;
+        this.lot = Lot;
 
 
     }
@@ -71,6 +74,14 @@ public class Ticket {
 
     public void setIs_lost(Boolean is_lost) {
         this.is_lost = is_lost;
+    }
+
+    public int getLot() {
+        return lot;
+    }
+
+    public void setLot(int lot) {
+        this.lot = lot;
     }
 
 

@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class TicketDao {
 
-    public static final String SELECT_ALL_TICKETS = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN,COST INTEGER FROM TICKET";
-    public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN ,COST INTEGER FROM TICKET WHERE ID = ?";
-    public static final String CREATE_TICKET = "INSERT INTO TICKET (ID,TIME_IN,TIME_OUT,IS_LOST,COST ) VALUES(?, ?, ?, ?,?)";
+    public static final String SELECT_ALL_TICKETS = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN,COST,LOT INTEGER FROM TICKET";
+    public static final String SELECT_SINGLE_TICKET = "SELECT  ID, TIME_IN TIME, TIME_OUT TIME, IS_LOST BOOLEAN ,COST,LOT INTEGER FROM TICKET WHERE ID = ?";
+    public static final String CREATE_TICKET = "INSERT INTO TICKET (ID,TIME_IN,TIME_OUT,IS_LOST,COST,LOT ) VALUES(?, ?, ?, ?,?, ?)";
     private final String UPDATE_TICKET = "UPDATE TICKET SET TIME_OUT = ?, IS_LOST = ?, COST = ? where ID = ?";
 
 
@@ -29,7 +29,8 @@ public class TicketDao {
                     resultSet.getTime("TIME_IN"),
                     resultSet.getTime("TIME_OUT"),
                     resultSet.getBoolean("IS_LOST"),
-                    resultSet.getInt("COST"));
+                    resultSet.getInt("COST"),
+            resultSet.getInt("LOT"));
 
             return result;
         }
@@ -68,7 +69,7 @@ public class TicketDao {
      */
     public void createTicket(Ticket ti) {
 
-        jdbcTemplate.update(CREATE_TICKET, new Object[]{ti.getID(), ti.getTime_in(), ti.getTime_out(), ti.getIs_lost(), ti.getCost()});
+        jdbcTemplate.update(CREATE_TICKET, new Object[]{ti.getID(), ti.getTime_in(), ti.getTime_out(), ti.getIs_lost(), ti.getCost(),ti.getLot()});
     }
 
     /**

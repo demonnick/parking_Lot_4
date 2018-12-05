@@ -13,7 +13,7 @@ public class TicketTest {
 
     @Before
     public void setUp() throws Exception {
-        Ticket ticket = new Ticket(0,Time.valueOf("12:00:00"),Time.valueOf("12:00:00"),false,0);
+       // Ticket ticket = new Ticket(0,Time.valueOf("12:00:00"),Time.valueOf("12:00:00"),false,0);
     }
 
 

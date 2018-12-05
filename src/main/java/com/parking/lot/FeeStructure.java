@@ -2,16 +2,34 @@ package com.parking.lot;
 
 public class FeeStructure {
 
+    private int lotId;
     private String time;
     private int price;
     private int start;
     private int end;
+    private int feeId;
 
-    public FeeStructure(String time, int price, int start, int end) {
+
+
+    public FeeStructure(int LotID, String time, int price, int start, int end, int FID) {
+        this.lotId = LotID;
         this.time = time;
         this.price = price;
         this.start = start;
         this.end = end;
+        this.feeId = FID;
+    }
+
+    public FeeStructure() {
+
+    }
+
+    public int getLotId() {
+        return lotId;
+    }
+
+    public void setLotId(int lotId) {
+        this.lotId = lotId;
     }
 
     public String getTime() {
@@ -44,5 +62,13 @@ public class FeeStructure {
 
     public void setEnd(int end) {
         this.end = end;
+    }
+
+    public int getFeeId() {
+        return feeId;
+    }
+
+    public void setFeeId(int feeId) {
+        this.feeId = feeId;
     }
 }
