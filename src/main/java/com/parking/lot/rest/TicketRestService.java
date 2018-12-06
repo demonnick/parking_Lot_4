@@ -19,28 +19,18 @@ public class TicketRestService {
     private TicketService ticketService;
     private FeeStructureService feeStructureService;
 
+
     /**
      * This class requires a {@link TicketService} to deal with tickets.
      *
-     * @param ticketService the {@link TicketService} to use.
-     */
-    public TicketRestService(TicketService ticketService) {
+
+    public TicketRestService(TicketService ticketService ,FeeStructureService feeStructureService) {
+
         this.ticketService = ticketService;
-    }
-
-    /**
-     * Get all tickets from the service.
-     */
-    @GET
-    @Path("/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Ticket> getAll() {
-
-
-        return (List<Ticket>) (ticketService.getAllTickets());
-
+        this.feeStructureService = feeStructureService;
 
     }
+
 
     /**
      * Get all tickets from the service.
@@ -48,13 +38,29 @@ public class TicketRestService {
     @GET
     @Path("/fee")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<FeeStructure> getAllFee() {
+    public List<FeeStructure> getAll() {
 
 
+        //return (List<Ticket>) (ticketService.getAllTickets());
         return (List<FeeStructure>) (feeStructureService.getFeeStructure());
 
 
     }
+
+
+    @GET
+    @Path("/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Ticket> getFee() {
+
+
+
+        return (List<Ticket>) (ticketService.getAllTickets());
+
+
+    }
+
+
 
     /**
      * Create a ticket

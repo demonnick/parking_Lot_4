@@ -7,8 +7,9 @@ import java.util.List;
 
 public class FeeStructureService {
 
-    FeeStructure fs = new FeeStructure();
     private LotDao lotDao;
+    FeeStructure fs = new FeeStructure();
+
 
     public FeeStructureService(LotDao lotDao) {
 
@@ -16,6 +17,7 @@ public class FeeStructureService {
     }
 
     public List<FeeStructure> getFeeStructure() {
+
         return lotDao.getFeeStructure();
     }
 

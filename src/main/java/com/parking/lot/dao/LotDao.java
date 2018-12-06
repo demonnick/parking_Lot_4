@@ -1,7 +1,6 @@
 package com.parking.lot.dao;
 
 import com.parking.lot.FeeStructure;
-import com.parking.lot.Ticket;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class LotDao {
 
-    public static final String GET_FEE_STRUCTURE = "SELECT (LOT_ID, TIME, START_TIME, END_TIME, PRICE) FROM FEE_STRUCTURE";
+    public static final String GET_FEE_STRUCTURE = "SELECT LOT_ID, TIME_INFO, PRICE, START_TIME, END_TIME,FEE_ID  FROM FEE_STRUCTURE";
     public static final String UPDATE_FEE_STRUCTURE = "UPDATE FEE_STRUCTURE SET TIME_INFO = ?, START_TIME = ?, END_TIME = ?, PRICE = ?";
 
     private JdbcTemplate jdbcTemplate;
@@ -26,12 +25,13 @@ public class LotDao {
             FeeStructure result = new FeeStructure(
                     resultSet.getInt("LOT_ID"),
                     resultSet.getString("TIME"),
+                    resultSet.getInt("PRICE"),
                     resultSet.getInt("START_TIME"),
                     resultSet.getInt("END_TIME"),
-                    resultSet.getInt("PRICE"),
                     resultSet.getInt("FEE_ID"));
-
+            System.out.println(result);
             return result;
+
         }
     };
 
@@ -54,7 +54,7 @@ public class LotDao {
      */
     public void updateTicket(FeeStructure feeStructure) {
 
-        jdbcTemplate.update(UPDATE_FEE_STRUCTURE, new Object[]{feeStructure.getTime(),feeStructure.getStart(), feeStructure.getEnd(), feeStructure.getPrice()});
+        jdbcTemplate.update(UPDATE_FEE_STRUCTURE, new Object[]{feeStructure.getTime(), feeStructure.getStart(), feeStructure.getEnd(), feeStructure.getPrice()});
     }
 }
 

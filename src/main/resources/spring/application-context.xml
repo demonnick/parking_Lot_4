@@ -16,13 +16,19 @@
     <bean id="ticketDao" class="com.parking.lot.dao.TicketDao">
         <constructor-arg ref="datasource"/>
     </bean>
+    <bean id="LotDao" class="com.parking.lot.dao.LotDao">
+        <constructor-arg ref="datasource"/>
+    </bean>
 
     <bean id="TicketService" class="com.parking.lot.service.TicketService">
         <constructor-arg ref="ticketDao"/>
     </bean>
-    <bean id="ticketRestService" class="com.parking.lot.rest.TicketRestService">
-        <constructor-arg ref="TicketService"/>
+    <bean id="FeeStructureService" class="com.parking.lot.service.FeeStructureService">
+        <constructor-arg ref="LotDao"/>
     </bean>
+
+
+
 
     <import resource="classpath:springmvc-resteasy.xml"/>
     <import resource="classpath:/spring/flyway-init.xml"/>

@@ -30,7 +30,7 @@ public class TicketDao {
                     resultSet.getTime("TIME_OUT"),
                     resultSet.getBoolean("IS_LOST"),
                     resultSet.getInt("COST"),
-            resultSet.getInt("LOT"));
+                    resultSet.getInt("LOT"));
 
             return result;
         }
@@ -69,7 +69,7 @@ public class TicketDao {
      */
     public void createTicket(Ticket ti) {
 
-        jdbcTemplate.update(CREATE_TICKET, new Object[]{ti.getID(), ti.getTime_in(), ti.getTime_out(), ti.getIs_lost(), ti.getCost(),ti.getLot()});
+        jdbcTemplate.update(CREATE_TICKET, new Object[]{ti.getID(), ti.getTime_in(), ti.getTime_out(), ti.getIs_lost(), ti.getCost(), ti.getLot()});
     }
 
     /**
