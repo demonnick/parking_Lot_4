@@ -13,29 +13,29 @@ import java.util.List;
  * A DAO representing the interaction with the Fee structure and Lot table.
  */
 
-public class LotDao {
+public class FeeDao {
 
-    public static final String GET_FEE_STRUCTURE = "SELECT LOT_ID, TIME_INFO, PRICE, START_TIME, END_TIME,FEE_ID  FROM FEE_STRUCTURE";
+    public static final String GET_FEE_STRUCTURE = "SELECT LOT_ID INTEGER,TIME_INFO VARCHAR,PRICE INT,START_TIME INT,END_TIME INT,FEE_ID INT FROM FEE";
     public static final String UPDATE_FEE_STRUCTURE = "UPDATE FEE_STRUCTURE SET TIME_INFO = ?, START_TIME = ?, END_TIME = ?, PRICE = ?";
 
     private JdbcTemplate jdbcTemplate;
     private final RowMapper<FeeStructure> lotRowMapper = new RowMapper<FeeStructure>() {
-        @Override
+
         public FeeStructure mapRow(ResultSet resultSet, int i) throws SQLException {
             FeeStructure result = new FeeStructure(
                     resultSet.getInt("LOT_ID"),
-                    resultSet.getString("TIME"),
+                    resultSet.getString("TIME_INFO"),
                     resultSet.getInt("PRICE"),
                     resultSet.getInt("START_TIME"),
                     resultSet.getInt("END_TIME"),
                     resultSet.getInt("FEE_ID"));
-            System.out.println(result);
+
             return result;
 
         }
     };
 
-    public LotDao(DataSource dataSource) {
+    public FeeDao(DataSource dataSource) {
 
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
@@ -54,7 +54,7 @@ public class LotDao {
      */
     public void updateTicket(FeeStructure feeStructure) {
 
-        jdbcTemplate.update(UPDATE_FEE_STRUCTURE, new Object[]{feeStructure.getTime(), feeStructure.getStart(), feeStructure.getEnd(), feeStructure.getPrice()});
+        jdbcTemplate.update(UPDATE_FEE_STRUCTURE, new Object[]{feeStructure.getTime_info(), feeStructure.getStart(), feeStructure.getEnd(), feeStructure.getPrice()});
     }
 }
 

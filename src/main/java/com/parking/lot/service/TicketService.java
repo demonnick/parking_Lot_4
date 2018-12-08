@@ -4,7 +4,6 @@ package com.parking.lot.service;
 import com.parking.lot.FeeStructure;
 import com.parking.lot.Ticket;
 import com.parking.lot.dao.TicketDao;
-import jdk.nashorn.internal.objects.NativeString;
 
 import java.sql.Time;
 import java.time.*;
@@ -32,7 +31,7 @@ public class TicketService {
      *
      * @param t is the ticket information entered.
      */
-    public void createTicket(Ticket t) {
+    public Ticket createTicket(Ticket t) {
 
 
         ti.setID(t.getID());
@@ -44,6 +43,7 @@ public class TicketService {
         ticketDao.createTicket(ti);
 
 
+        return  ti;
     }
 
     /**

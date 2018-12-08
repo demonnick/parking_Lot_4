@@ -12,9 +12,19 @@ public class TicketTest {
     private Ticket ticket;
 
     @Before
-    public void setUp() throws Exception {
-       // Ticket ticket = new Ticket(0,Time.valueOf("12:00:00"),Time.valueOf("12:00:00"),false,0);
+    public void initialize() {
+        ticket = new Ticket(10, Time.valueOf("02:00:00"), Time.valueOf("12:00:00"), false, 30, 1);
     }
 
 
+    @Test
+    public void shouldCreateTicketWithParameters() {
+        assertEquals(ticket, ticket);
+    }
+
+    @Test
+    public void ensureCostIsCorrect() {
+        int result = ticket.getCost();
+        assertEquals(ticket.getCost(), result);
+    }
 }

@@ -17,7 +17,7 @@ Time	 |   Fee
 2.5hr+     |   R50  
 LOST	 |   R100   
 
-if a car stays for longer than 2.5 hours(the longest possible time allocation, it is assumed the ticket is lost and the fee will be the 2.5hr + lost fee. 
+if a car stays for longer than 2.5 hours(the longest possible time_info allocation, it is assumed the ticket is lost and the fee will be the 2.5hr + lost fee. 
 
 #View all tickets \
 Definition 
