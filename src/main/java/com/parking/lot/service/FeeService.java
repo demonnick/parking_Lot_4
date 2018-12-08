@@ -5,7 +5,7 @@ import com.parking.lot.dao.FeeDao;
 
 import java.util.List;
 
-public class FeeService {
+public class FeeService implements FeeServiceInterface {
 
     private FeeDao feeDao;
     FeeStructure fs = new FeeStructure();
@@ -16,11 +16,13 @@ public class FeeService {
         this.feeDao = feeDao;
     }
 
+    @Override
     public List<FeeStructure> getFeeStructure() {
 
         return feeDao.getFeeStructure();
     }
 
+    @Override
     public void updateFeeStructure(FeeStructure feeStructure) {
 
         fs.setTime_info(feeStructure.getTime_info());

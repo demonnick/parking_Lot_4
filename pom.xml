@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.parkingLot</groupId>
@@ -14,6 +15,16 @@
         <resteasy.version>2.2.1.GA</resteasy.version>
         <hsqldb.version>2.4.1</hsqldb.version>
     </properties>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+            </plugin>
+        </plugins>
+    </reporting>
     <dependencies>
 
         <!-- HSQL -->
@@ -41,13 +52,11 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-json-binding-provider</artifactId>
             <version>4.0.0.Beta6</version>
         </dependency>
-
 
 
         <!-- SPRING -->
@@ -94,7 +103,6 @@
         </dependency>
 
 
-
         <!-- TESTING -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -130,7 +138,6 @@
 
     </dependencies>
     <build>
-
 
 
         <plugins>

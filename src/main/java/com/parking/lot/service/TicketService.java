@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * A Service that represents all the interactions for a ticket.
  */
-public class TicketService {
+public class TicketService implements TicketServiceInterface {
 
     private TicketDao ticketDao;
 
@@ -31,6 +31,7 @@ public class TicketService {
      *
      * @param t is the ticket information entered.
      */
+    @Override
     public Ticket createTicket(Ticket t) {
 
 
@@ -49,6 +50,7 @@ public class TicketService {
     /**
      * Get all tickets.
      */
+    @Override
     public List<Ticket> getAllTickets() {
         return ticketDao.getTickets();
     }
@@ -56,6 +58,7 @@ public class TicketService {
     /**
      * Get a single ticket.
      */
+    @Override
     public Ticket getTicket(int id) {
         return ticketDao.getTicket(id);
     }
@@ -63,6 +66,7 @@ public class TicketService {
     /**
      * Calculate ticket cost.
      */
+    @Override
     public int calcCost() {
 
         int cost = 0;
@@ -105,6 +109,7 @@ public class TicketService {
      *
      * @param ticket is the ticket information entered.
      */
+    @Override
     public void updateTicket(Ticket ticket) {
 
 
